@@ -4,4 +4,4 @@ let isRegistered = true;  //boolean
 let favoriteColor = null;  //null
 let phoneNumber;  //undefined datatype
 
-console.log(studentName,age,isRegistered,favoriteColor,phoneNumber);
+console.log("name",studentName,"age",age,"registered",isRegistered,"color",favoriteColor,"number",phoneNumber);
