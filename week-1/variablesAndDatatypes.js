@@ -15,7 +15,7 @@ let isApproved = true;
 //Farmer information
 let farmerName="Hellen Ikiror"; //string
 let farmerAge = 20;
-let isRegistered = true;
+//let isRegistered = true;
 
 //chick request
 let typeOfChick = "Broiler"
