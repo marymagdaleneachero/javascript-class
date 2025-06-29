@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <h2>YOUNG4CHICK REQUEST</h2>
+
+    <form action="" id="chickForm">
+        <label for="farmer name">Farmer name:</label>
+        <input type="text" id="farmerName" placeholder="enter your name">
+
+        <label for="farmer age">Farmer age</label>
+        <input type="number" id="age" placeholder="20-30 years">
+
+        <label for="number of chicks">Number of chicks</label>
+        <input type="quantity" id="quantity" placeholder="number of chicks (100-500)">
+
+        <label for="chickType">Chick type:</label>
+        <select name="Chick type" id="chickType">
+            <option value="">Select chick type</option>
+            <option value="broiler">Broiler</option>
+            <option value="layer">Layer</option>
+        </select>
+
+        <button type="submit">Submit request</button>
+        <p id="errorMsg" class="error"></p>
+    </form>
+
+    <form action="" id="form2">
+
+
+
+    </form>
+
+
+    <form action="=" id="form3"></form>
+
+    <h2>ADMIN DASHBOARD</h2>
+
+    <!-- <table id="tb1">
+        <tr>
+            <th>name</th>
+            <th>Age</th>
+            <th>Gender</th>
+        </tr>
+    </table> -->
+<table class="table" id="tb1">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">age</th>
+      <th scope="col">Chick type</th>
+      <th scope="col">quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+
+    <script>
+        //code for the form
+        console.log(document.forms[0].id);
+
+        const firstForm = document.getElementById('form1');
+
+        //code for the table
+        const table = document.getElementById('tb1');
+        let newRow = table.insertRow();
+        let cell1 = newRow.insertCell(0);
+        let cell2 = newRow.insertCell(1);
+        let cell3 = newRow.insertCell(2);
+        let cell4 = newRow.insertCell(3);
+        cell1.textContent = name;
+        cell2.textContent = age;
+        cell3.textContent = type;
+        cell4.textContent = quantity;
+    </script>
+    <script src="/week-3/formAndTableHandling.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+</body>
+
+</html>

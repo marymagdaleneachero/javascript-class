@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canvas Dodge Game</title>
+    <style>
+      h1 {
+        margin: 10px;
+        color: brown;
+      }
+      #gameCanvas {
+        border-radius: 8px;
+        padding: 15px;
+        background: black;
+        border: 2px solid purple;
+        box-shadow: 8px 5px rgba(90, 3, 251, 0.5);
+        display: block;
+        margin: 0 auto;
+      }
+      #main-canvas {
+        margin-top: 25px;
+        position: relative;
+      }
+      #score {
+        position: absolute;
+        top: 10px;
+        left: 500px;
+        font-size: 20px;
+        margin: 10px;
+      }
+
+      body {
+        margin-top: 10px;
+        background: lightblue;
+        color: white;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+      }
+
+      #restartBtn {
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Canvas Dodge Game</h1>
+    <div id="main-canvas">
+      <!--The following code is to draw the canvas-->
+      <canvas id="gameCanvas" width="300" height="495"></canvas>
+      <!---The Following Code is for the Score Display-->
+      <div id="score">Score: 0</div>
+    </div>
+
+    <div>
+      <button id="restartBtn" onclick="restartGame()">Restart</button>
+    </div>
+
+    <script>
+      // Drawing the player rectangle
+
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+      const player = {
+        x: 180,
+        y: 470,
+        width: 40,
+        height: 20,
+        speed: 10,
+        color: "green",
+      };
+      let obstacles = [];
+      let score = 0;
+      let gameOver = false;
+
+      function drawPlayer() {
+        ctx.fillStyle = player.color;
+        ctx.fillRect(player.x, player.y, player.width, player.height);
+      }
+
+      //Adding keyboard controls
+
+      let keys = {};
+
+      document.addEventListener("keydown", (e) => {
+        keys[e.key] = true;
+      });
+
+      document.addEventListener("keyup", (e) => {
+        keys[e.key] = false;
+      });
+
+      function update() {
+        // Move player
+        if (keys["ArrowLeft"] && player.x > 0) {
+          player.x -= player.speed;
+        }
+        if (keys["ArrowRight"] && player.x < canvas.width - player.width) {
+          player.x += player.speed;
+        }
+      }
+
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPlayer();
+      }
+
+      function gameLoop() {
+        update();
+        draw();
+        requestAnimationFrame(gameLoop);
+      }
+
+      gameLoop(); // Start the game
+
+      //Obstacle logic
+
+      function createObstacle() {
+        const x = Math.random() * (canvas.width - 40);
+        obstacles.push({ x: x, y: 0, width: 40, height: 10 });
+      }
+
+      // Drawing Horizontal Obstacles
+      function drawObstacles() {
+        ctx.fillStyle = "red";
+        obstacles.forEach((obs) => {
+          ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
+          obs.y += 2;
+        });
+      }
+
+      //Requesting animation for the obstacles descent
+
+      function updateGame() {
+        if (gameOver) {
+          document.getElementById(
+            "score"
+          ).textContent = `Game Over!' Score: ${score}`;
+          return;
+        }
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        drawPlayer();
+        drawObstacles();
+        checkCollision();
+
+        score++;
+        document.getElementById("score").textContent = `Score ${score}`;
+        requestAnimationFrame(updateGame);
+      }
+
+      // Restart button
+      function restartGame() {
+        obstacles = [];
+        score = 0;
+        player.x = 180;
+        gameOver = false;
+        updateGame();
+      }
+
+      //Track survival time
+
+      setInterval(createObstacle, 1500);
+      updateGame();
+
+      // Check Collision
+      function checkCollision() {
+        obstacles.forEach((obs) => {
+          if (
+            obs.x < player.x + player.width &&
+            obs.x + obs.width > player.x &&
+            obs.y < player.y + player.height &&
+            obs.y + obs.height > player.y
+          ) {
+            gameOver = true;
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

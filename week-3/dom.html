@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            color:blueviolet;
+            
+        }
+    </style>
+</head>
+<body>
+    <h1 class ="title" id ="heading-one">This is heading one</h1>
+    <h1 class ="title" id ="heading-two">This is heading two</h1>
+    <h1 class ="title" id ="heading-three">This is heading three</h1>
+    <h1></h1>
+    <script src="/week-3/dom.js">
+        
+    </script>
+    <script>
+        let subHeading;
+        for (let i =0; i < 10; i++){
+        subHeading = document.createElement('h2');
+        subHeading.className ='subHeading-2'
+        subHeading.id = 'hood';
+        subHeading.textContent='This is a subheading';
+        subHeading.style.fontSize= '24px';
+        subHeading.style.color = 'blue';
+        document.body.appendChild(subHeading);
+
+        }
+        
+    </script>
+</body>
+</html>

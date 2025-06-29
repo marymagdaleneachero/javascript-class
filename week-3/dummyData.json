@@ -1,0 +1,26 @@
+[
+    {
+    "name": "Haydar Badawi",
+    "age": 35,
+    "type": "broiler",
+    "quantity": 100
+    },
+    {
+    "name": "Ahmed Badawi",
+    "age": 36,
+    "type": "layer",
+    "quantity": 105
+    },
+    {
+    "name": "Sohaib Badawi",
+    "age": 42,
+    "type": "broiler",
+    "quantity": 110
+    },
+    {
+    "name": "Abdulhalim Badawi",
+    "age": 39,
+    "type": "layer",
+    "quantity": 170
+    }
+]

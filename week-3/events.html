@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <h1>Testing</h1>
+    <button id="submitButton">Submit Chick Request</button>
+    <button onclick="alert('button clicked')">On Click</button>
+
+    <form action="">
+
+        <label for = "username">Enter username</label>
+        <input type = "text" id = "username" name = "username">
+        <input type = "submit">
+
+
+    </form>
+    <script>
+        //prevent a form to submit automatically
+        const form = document.getElementById('myForm')
+        form.addEventListener('submit', function(event){
+            event.preventDefault
+            console.log('automatic form submission blocked')
+        })
+
+        document.getElementById('submitButton').onclick = function(){
+            alert('button clicked');
+        }
+    </script>
+    <script src="/week-3/events.js"></script>
+</body>
+</html>
